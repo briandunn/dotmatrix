@@ -1,44 +1,21 @@
-[alias]
-	st = status
-	ci = commit
-	co = checkout
-	cp = cherry-pick
-	put = push origin HEAD
-	fixup = !sh -c 'git commit -m \"fixup! $(git log -1 --format='\\''%s'\\'' $@)\"' -
-	squash = !sh -c 'git commit -m \"squash! $(git log -1 --format='\\''%s'\\'' $@)\"' -
-	ri = rebase --interactive
-[branch]
-	autosetuprebase = always
-[color]
-	ui = auto
-[core]
-	excludesfile = ~/.cvsignore
-	editor = vim
-	whitespace = warn
-[help]
-	autocorrect = 10
-[merge]
-	summary = true
-[merge "bundlelock"]
-	name = lock Gemfile
-	driver = bundle install
-[merge "bundle"]
-	name = bundle
-	driver = bundle
-[merge "railsschema"]
-	name = newer Rails schema version
-	driver = "ruby -e '\n\
-		system %(git), %(merge-file), %(--marker-size=%L), %(%A), %(%O), %(%B)\n\
-		b = File.read(%(%A))\n\
-		b.sub!(/^<+ .*\\nActiveRecord::Schema\\.define.:version => (\\d+). do\\n=+\\nActiveRecord::Schema\\.define.:version => (\\d+). do\\n>+ .*/) do\n\
-		  %(ActiveRecord::Schema.define(:version => #{[$1, $2].max}) do)\n\
-		end\n\
-		File.open(%(%A), %(w)) {|f| f.write(b)}\n\
-		exit 1 if b.include?(%(<)*%L)'"
-[push]
-	default = tracking
-[rebase]
-	autosquash = true
 [user]
-	email = dev@hashrocket.com
-	name = "Hashrocket Workstation"
+	name = Brian Dunn
+	email = brianpatrickdunn@gmail.com
+[core]
+	excludesfile = /Users/brian/.gitignore
+[github]
+	user = briandunn
+	token = a347a81027259ff8117d56daebe71eee
+[merge]
+	tool = opendiff
+	summary = true
+[core]
+	editor = vim
+[gui]
+	recentrepo = /Users/brian/src/healthleap
+[diff]
+	color = auto
+[giggle]
+	compact-mode = false
+	main-window-maximized = false
+	main-window-geometry = 1018x905+1918+164
